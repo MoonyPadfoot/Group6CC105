@@ -1449,8 +1449,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Your Objective is to help Shota catch school objects taking its respective
-    point(s). Pencil(1), Notebook(2), Book(3) '
+  m_text: Your Objective is to help Shota catch school objects taking its respective
+    point(s). Pencil(1), Notebook(2), Book(3).
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1522,7 +1522,7 @@ MonoBehaviour:
     textComponent: {fileID: 487902817}
     characterCount: 117
     spriteCount: 0
-    spaceCount: 16
+    spaceCount: 15
     wordCount: 20
     linkCount: 0
     lineCount: 4
@@ -6040,8 +6040,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Power-ups also drop. Apple gives life(+1) if damaged, medal slows rate of
-    falling objects, while star multiplies(X2) subsequent points earned.
+  m_text: Power-ups also drop. Apple gives life(+1) if damaged, medal drops point
+    objects(20s), while star multiplies(X2) subsequent points earned(10s).
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -6088,7 +6088,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 135
+  m_firstOverflowCharacterIndex: 130
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -6113,7 +6113,7 @@ MonoBehaviour:
     textComponent: {fileID: 1937733361}
     characterCount: 142
     spriteCount: 0
-    spaceCount: 19
+    spaceCount: 17
     wordCount: 22
     linkCount: 0
     lineCount: 5

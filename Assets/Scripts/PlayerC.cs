@@ -19,13 +19,16 @@ public class PlayerC : MonoBehaviour
     private bool startMoving = false;
 
     //time duration
+    
     float timerLength = 10.0f;//The length of time in seconds.
+    float timerLength2 = 5.0f;//for Medal
     float timerTimePassed = 0.0f;//The variable that will store the time passed while the timer is going.
     bool runTimer = false;
-    public bool Runtimer {get{return runTimer;}}//duration effect
+    public bool Runtimer {get{return runTimer;}}//duration effect star
+     bool runTimer2 = false; //duration effect Medal
+    public bool Runtimer2 {get{return runTimer2;}}
 
-    bool runTimer2 = false;
-    public bool Runtimer2 {get{return runTimer2;}}//duration effect
+
     private int life = 3;
     public int Life{get {return life;}}
     private int score;
@@ -58,7 +61,7 @@ public class PlayerC : MonoBehaviour
             {
                 timerTimePassed = 0f;
                 runTimer = false;
-                MenuManager.instance.RemoveStatusEffect();
+                MenuManager.instance.RemoveStatusEffect(1);
                 //Put code here to be triggered when timer fires.
             }
         }
@@ -66,11 +69,11 @@ public class PlayerC : MonoBehaviour
         {
             timerTimePassed += Time.deltaTime;//clock
 
-            if (timerTimePassed >= timerLength)
+            if (timerTimePassed >= timerLength2)
             {
                 timerTimePassed = 0f;
                 runTimer2 = false;
-                
+                MenuManager.instance.RemoveStatusEffect(2);
                 //Put code here to be triggered when timer fires.
             }
         }
@@ -114,7 +117,7 @@ public class PlayerC : MonoBehaviour
         if (other.CompareTag("Point1"))
         {
             SoundManager.instance.PlayPoint();
-            Debug.Log("1");
+            // Debug.Log("1");
             score = 1;
             MenuManager.instance.IncreaseScore();
         }
@@ -123,26 +126,26 @@ public class PlayerC : MonoBehaviour
             SoundManager.instance.PlayPoint();
             score = 2;
             MenuManager.instance.IncreaseScore();
-            Debug.Log("2");
+            // Debug.Log("2");
         }
         else if(other.CompareTag("Point3"))
         {
             SoundManager.instance.PlayPoint();
             score = 3;
             MenuManager.instance.IncreaseScore();
-            Debug.Log("3");
+            // Debug.Log("3");
         }
         
         else if (other.CompareTag("Enemy"))
         {   
              SoundManager.instance.PlayDeath();
-            Debug.Log("Hit enemy");
+            // Debug.Log("Hit enemy");
             Health.health -= 1;
         }
         else if (other.CompareTag("Power1"))
         {   
             SoundManager.instance.PlayPoint();
-            Debug.Log("Hit enemy");
+            // Debug.Log("Hit enemy");
             if (Health.health < 3) 
                 Health.health += 1;
         }
@@ -150,12 +153,13 @@ public class PlayerC : MonoBehaviour
         {   
             SoundManager.instance.PlayPoint();
             runTimer2 = true;
+            MenuManager.instance.ShowStatusEffect(2);
         }
         else if (other.CompareTag("Power3"))
         {   
             SoundManager.instance.PlayPoint();
             runTimer = true;
-            MenuManager.instance.ShowStatusEffect(); 
+            MenuManager.instance.ShowStatusEffect(1); 
         }
         // else if (other.CompareTag("Points2")){ Debug.Log("Point1");}
         // else if (other.CompareTag("Points3")){ Debug.Log("Point1");}

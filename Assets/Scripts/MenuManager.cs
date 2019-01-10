@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
     [SerializeField]
-    private Text scoreText, goScoreText, multiplierText;
+    private Text scoreText, goScoreText, multiplierText, slowText;
     [SerializeField]
     private GameObject gameOverMenu;
     private int currentScore;
@@ -21,27 +21,31 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         multiplierText.gameObject.SetActive(false);
+        slowText.gameObject.SetActive(false);
         scoreText.text = "" + 0;
     }
     
     public void IncreaseScore()
     {
-        if (PlayerC.instance.Runtimer == true) 
+        if (PlayerC.instance.Runtimer) 
         {
             currentScore += PlayerC.instance.Score * 2;
         }
         else {
             currentScore += PlayerC.instance.Score;
         }
+        
         scoreText.text = "" + currentScore;
     }
-    public void ShowStatusEffect()
+    public void ShowStatusEffect(int stat)
     {
-        multiplierText.gameObject.SetActive(true);
+        if(stat == 1) multiplierText.gameObject.SetActive(true);
+        else if (stat == 2) slowText.gameObject.SetActive(true);
     }
-    public void RemoveStatusEffect()
+    public void RemoveStatusEffect(int stat)
     {
-        multiplierText.gameObject.SetActive(false);
+        if(stat == 1) multiplierText.gameObject.SetActive(false);
+        else if(stat == 2) slowText.gameObject.SetActive(false);
     }
 
     public void ReplayBtn()

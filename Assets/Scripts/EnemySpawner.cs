@@ -28,28 +28,45 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy(float xPos)
     {
         int r = Random.Range(0,9);
+        int p = Random.Range(0,3);
+        string enemyName = "";
 
         //GameObject enemyObj = Instantiate(enemyPrefabs[r], new Vector3(xPos,transform.position.y,0),Quaternion.identity);
-        string enemyName = "";
-        switch(r){
-            case 0: enemyName ="Enemy1";
-            break;//"Enemy1"; 
-            case 1: enemyName = "Enemy2";
-            break;
-            case 2: enemyName = "Enemy3";
-            break;
-            case 3: enemyName = "Points1";
-            break;
-            case 4:  enemyName = "Points2";
-            break;
-            case 5:  enemyName = "Points3";
-            break;
-            case 6: if(Random.value > 0.85) enemyName = "Power1"; 
-                    else enemyName = "Enemy1"; break;
-            case 7: if(Random.value > 0.9) enemyName = "Power2"; 
-                    else enemyName = "Enemy2"; break;
-            case 8: if(Random.value > 0.9) enemyName = "Power3"; 
-                    else enemyName = "Enemy3"; break;
+        if(PlayerC.instance.Runtimer2 == true)
+        {
+            Debug.Log("valor");
+            switch(p)
+            {              
+                case 0: enemyName = "Points1";
+                break;
+                case 1:  enemyName = "Points2";
+                break;
+                case 2:  enemyName = "Points3";
+                break;
+            }
+        }
+        else{
+            switch(r)
+            {
+                case 0: enemyName ="Enemy1";
+                break;//"Enemy1"; 
+                case 1: enemyName = "Enemy2";
+                break;
+                case 2: enemyName = "Enemy3";
+                break;
+                case 3: enemyName = "Points1";
+                break;
+                case 4:  enemyName = "Points2";
+                break;
+                case 5:  enemyName = "Points3";
+                break;
+                case 6: if(Random.value > 0.85) enemyName = "Power1"; 
+                        else enemyName = "Enemy1"; break;
+                case 7: if(Random.value > 0.95) enemyName = "Power2"; 
+                        else enemyName = "Enemy2"; break;
+                case 8: if(Random.value > 0.9) enemyName = "Power3"; 
+                        else enemyName = "Enemy3"; break;
+            }
             // else enemyName = "Enemy1";
         }
         // else if (r == 7) enemyName = "Power2";
@@ -80,21 +97,24 @@ public class EnemySpawner : MonoBehaviour
         xPos = remainingPosition[rand];
         remainingPosition.RemoveAt(rand);
         // }
-        
+        foreach(Wave i in wave){
+            if (MenuManager.instance.CurrentScore > 20 && MenuManager.instance.CurrentScore < 40)      
+                i.delayTime = 3.5f;
+            else if (MenuManager.instance.CurrentScore > 40 && MenuManager.instance.CurrentScore < 60 ){Debug.Log("30");
+                i.delayTime = 3.0f;}
+            else if (MenuManager.instance.CurrentScore > 60 && MenuManager.instance.CurrentScore < 80)
+                i.delayTime = 2.5f;
+            else if (MenuManager.instance.CurrentScore > 80 && MenuManager.instance.CurrentScore < 100)
+                wave[waveIndex].delayTime = 2.0f;
+            else if (MenuManager.instance.CurrentScore > 100 && MenuManager.instance.CurrentScore < 120)
+                wave[waveIndex].delayTime = 1.5f;
+            else if (MenuManager.instance.CurrentScore > 120)
+                wave[waveIndex].delayTime = 1.0f;
+            
+        }
         for(int i= 0; i < wave[waveIndex].spawnAmount; i++)
-        {
-            if (MenuManager.instance.CurrentScore > 15)
-                wave[waveIndex].delayTime = 1.75f;
-            else if (MenuManager.instance.CurrentScore > 30)
-                wave[waveIndex].delayTime = 1.50f;
-            else if (MenuManager.instance.CurrentScore > 45)
-                wave[waveIndex].delayTime = 1.25f;
-            else if (MenuManager.instance.CurrentScore > 60)
-                wave[waveIndex].delayTime = 1f;
-            else if (MenuManager.instance.CurrentScore > 75)
-                wave[waveIndex].delayTime = 0.75f;
-            else if (MenuManager.instance.CurrentScore > 90)
-                wave[waveIndex].delayTime = 0.50f;
+        {            
+                     
             SpawnEnemy(xPos);
             rand = Random.Range(0,remainingPosition.Count);
             xPos = remainingPosition[rand];

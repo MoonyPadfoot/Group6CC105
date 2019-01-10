@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class Health : MonoBehaviour
         switch (health)
         {
         case 3:
-            Debug.Log("Case3");
+            // Debug.Log("Case3");
             lives.gameObject.SetActive(true);
             lives1.gameObject.SetActive(true);
             lives2.gameObject.SetActive(true);
@@ -27,7 +28,7 @@ public class Health : MonoBehaviour
             break;
         
         case 2:
-            Debug.Log("Case2");
+            // Debug.Log("Case2");
             lives.gameObject.SetActive(true);
             lives1.gameObject.SetActive(true);
             lives2.gameObject.SetActive(false);
@@ -37,7 +38,7 @@ public class Health : MonoBehaviour
             break;
         
         case 1:
-        Debug.Log("Case1");
+        // Debug.Log("Case1");
             lives.gameObject.SetActive(true);
             lives1.gameObject.SetActive(false);
             lives2.gameObject.SetActive(false);
@@ -47,7 +48,7 @@ public class Health : MonoBehaviour
             break;
 
         case 0:
-        Debug.Log("Case0");
+        // Debug.Log("Case0");
             lives.gameObject.SetActive(false);
             lives1.gameObject.SetActive(false);
             lives2.gameObject.SetActive(false);
