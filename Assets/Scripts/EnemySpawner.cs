@@ -27,16 +27,31 @@ public class EnemySpawner : MonoBehaviour
     }
     void SpawnEnemy(float xPos)
     {
-        int r = Random.Range(0,7);
+        int r = Random.Range(0,9);
+
         //GameObject enemyObj = Instantiate(enemyPrefabs[r], new Vector3(xPos,transform.position.y,0),Quaternion.identity);
         string enemyName = "";
-        if(r == 0) enemyName ="Enemy1";//"Enemy1";
-        else if (r == 1) enemyName = "Enemy2";
-        else if (r == 2) enemyName = "Enemy3";
-        else if(r == 3) enemyName = "Points1";
-        else if (r == 4) enemyName = "Points2";
-        else if (r == 5) enemyName = "Points3";
-        else if (r == 6) enemyName = "Power1";
+        switch(r){
+            case 0: enemyName ="Enemy1";
+            break;//"Enemy1"; 
+            case 1: enemyName = "Enemy2";
+            break;
+            case 2: enemyName = "Enemy3";
+            break;
+            case 3: enemyName = "Points1";
+            break;
+            case 4:  enemyName = "Points2";
+            break;
+            case 5:  enemyName = "Points3";
+            break;
+            case 6: if(Random.value > 0.85) enemyName = "Power1"; 
+                    else enemyName = "Enemy1"; break;
+            case 7: if(Random.value > 0.9) enemyName = "Power2"; 
+                    else enemyName = "Enemy2"; break;
+            case 8: if(Random.value > 0.9) enemyName = "Power3"; 
+                    else enemyName = "Enemy3"; break;
+            // else enemyName = "Enemy1";
+        }
         // else if (r == 7) enemyName = "Power2";
         // else if (r == 8) enemyName = "Power3";
         // else if (r == 6) enemyName = "Power1";
@@ -94,6 +109,7 @@ public class EnemySpawner : MonoBehaviour
         if(PlayerC.instance.StartMoving == true)
         {
             currentTime -= Time.deltaTime;
+            
             if(currentTime <= 0)
             {
                 
